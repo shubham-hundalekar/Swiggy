@@ -1,6 +1,6 @@
 const menuData = [
     {
-        "menu":{
+        "mainMenu":{
                 "10894" : { // Pizza Hut
             name: "Pizza Hut",
             cuisines: ["Pizza", "Italian"],
@@ -215,7 +215,9 @@ const menuData = [
                     { id: "820", name: "Long Black", price: 10900, veg: true, avgRating: 4.1, costForTwo: 250 }
                 ]
                 }
-    }
+    },
+    imgLink : "https://tse2.mm.bing.net/th/id/OIP.xnOdHsT-Ny1NUwz1uv5r-AHaFj?rs=1&pid=ImgDetMain&o=7&rm=3"
+
     }
     
 ];
