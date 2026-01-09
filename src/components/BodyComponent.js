@@ -1,6 +1,6 @@
 import { useEffect, useState } from "react";
 import resList from "../utils/mockdata";
-import RestaurantCard from "./RestaurantComponent";
+import RestaurantCard, {withFreeDeliveryLable} from "./RestaurantComponent";
 import ShimmerComp from "./Shimmer";
 import {Link} from "react-router-dom"
 import useOnlineStatus from "../utils/useOnlineStatus";
@@ -9,6 +9,7 @@ const BodyComponent = () =>{
     const [listofRestaurant,setListofRestaurant] = useState([]) 
     const [filteredRestaurants, setFilteredRestaurants] = useState([]);
     const [searchText, setSearchText] = useState("");
+    const RestaurantCardFreeDelivery = withFreeDeliveryLable(RestaurantCard);
 
     useEffect(()=>{
         fetchData();
@@ -55,7 +56,13 @@ const BodyComponent = () =>{
             </div>
             <div className="flex flex-wrap justify-self-auto">
                     {
-                        filteredRestaurants.map((restaurant) =>( <Link to={"restaurants/"+restaurant.info.id} key={restaurant.info.id} ><RestaurantCard  resData={restaurant}/></Link>))
+                        filteredRestaurants.map((restaurant) =>( 
+                            
+                            <Link to={"restaurants/"+restaurant.info.id} key={restaurant.info.id} >
+                                {
+                                    restaurant.info.avgRating >=4.4 ? (<RestaurantCardFreeDelivery resData={restaurant}/>):(<RestaurantCard  resData={restaurant}/>)
+                                }
+                            </Link>))
                     }
             </div>
         </div>

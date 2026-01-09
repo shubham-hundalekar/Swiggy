@@ -15,4 +15,17 @@ const RestaurantCard = (props)=>{
     )
 }
 
+
+//Higher order component
+export const withFreeDeliveryLable=(RestaurantCard)=>{
+    return (props)=>{
+        return (
+            <div>
+                <label className="absolute p-2 m-2 text-white bg-black rounded">Free Delivery</label>
+                <RestaurantCard {...props}/>
+            </div>
+        );
+    }
+}
+
 export default RestaurantCard;
