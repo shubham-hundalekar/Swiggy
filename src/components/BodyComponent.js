@@ -54,13 +54,15 @@ const BodyComponent = () =>{
                         }}>Filter top rated Restaurant</button>
                 </div>
             </div>
-            <div className="flex flex-wrap justify-self-auto">
+            <div className="flex flex-wrap justify-center">
                     {
                         filteredRestaurants.map((restaurant) =>( 
                             
                             <Link to={"restaurants/"+restaurant.info.id} key={restaurant.info.id} >
                                 {
-                                    restaurant.info.avgRating >=4.4 ? (<RestaurantCardFreeDelivery resData={restaurant}/>):(<RestaurantCard  resData={restaurant}/>)
+                                    restaurant.info.avgRating >=4.4 ? 
+                                    (<RestaurantCardFreeDelivery resData={restaurant}/>)
+                                    :   (<RestaurantCard  resData={restaurant}/>)
                                 }
                             </Link>))
                     }
