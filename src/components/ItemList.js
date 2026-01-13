@@ -11,8 +11,8 @@ const ItemList = (props)=>{
                             <span>{res.name}</span> - Rs.<span>{res.costForTwo}</span>
                         </div>
                         <div className="justify-center">
-                            <img src="https://images.pexels.com/photos/46239/salmon-dish-food-meal-46239.jpeg?cs=srgb&dl=close-up-cooking-dinner-46239.jpg&fm=jpg" alt="" className="w-[80px] "/>
-                            <button className="w-full py-1 my-1 text-sm font-bold text-center text-white bg-black rounded-md shadow-sm my-19" >ADD </button>
+                            <img className="w-[80px] " src="https://images.pexels.com/photos/46239/salmon-dish-food-meal-46239.jpeg?cs=srgb&dl=close-up-cooking-dinner-46239.jpg&fm=jpg" alt="" />
+                            <button className="w-full py-1 my-1 text-sm font-bold text-center text-white bg-black rounded-md shadow-sm my-19" >ADD</button>
                             
                             </div>
                     </div>

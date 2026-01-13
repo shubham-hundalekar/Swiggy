@@ -1,14 +1,12 @@
 import {useState} from "react"
 import ItemList from "./ItemList";
-const RestaurantCartegory = (props)=>{
-    const [showItems, setShowItems] = useState(false);
-    const title = props.title;
-    const categoryList = props.resMenu
+const RestaurantCategory = ({title, resMenu, showItems, setShowIndex})=>{
+    const categoryList = resMenu?.title[title];
     //toggle feature
+    console.log(resMenu);
     const handleClick = ()=>{
-        setShowItems(!showItems);
+        setShowIndex();
     }
-
     return(
         <div>
             {/* header */}
@@ -17,7 +15,7 @@ const RestaurantCartegory = (props)=>{
                     <span className="text-lg font-bold ">{title}({categoryList.length})</span>
                     <span>▼</span>
                 </div>
-                {showItems && <ItemList itemList={categoryList} />}
+                {showItems && <ItemList  itemList={categoryList} />}
             </div>
             
         </div>
@@ -25,4 +23,4 @@ const RestaurantCartegory = (props)=>{
 
     )
 }
-export default RestaurantCartegory;
+export default RestaurantCategory;
