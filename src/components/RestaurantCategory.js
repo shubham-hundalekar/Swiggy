@@ -4,7 +4,7 @@ const RestaurantCategory = ({title, resMenu, showItems, setShowIndex})=>{
     const categoryList = resMenu?.title[title];
     //toggle feature
     const [displayList, setDisplayList]  = useState(true);
-    
+
     const handleClick = ()=>{
         setDisplayList(showItems)
         setDisplayList(!displayList);    
@@ -22,8 +22,8 @@ const RestaurantCategory = ({title, resMenu, showItems, setShowIndex})=>{
     return(
         <div>
             {/* header */}
-            <div className="w-6/12 p-4 m-auto my-4 bg-gray-300 shadow-lg ">
-                <div className="flex justify-between cursor-pointer" onClick={()=>handleClick()}>
+            <div className="w-6/12 p-4 m-auto my-3 bg-gray-300 shadow-lg ">
+                <div className="flex justify-between cursor-pointer " onClick={()=>handleClick()}>
                     <span className="text-lg font-bold ">{title}({categoryList.length})</span>
                     <span>▼</span>
                 </div>

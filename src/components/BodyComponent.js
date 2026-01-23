@@ -1,16 +1,16 @@
-import { useEffect, useState } from "react";
+import {useContext,  useEffect, useState } from "react";
 import resList from "../utils/mockdata";
 import RestaurantCard, {withFreeDeliveryLable} from "./RestaurantComponent";
 import ShimmerComp from "./Shimmer";
 import {Link} from "react-router-dom"
 import useOnlineStatus from "../utils/useOnlineStatus";
-
+import UserContext from "../utils/UserContext"; 
 const BodyComponent = () =>{
     const [listofRestaurant,setListofRestaurant] = useState([]) 
     const [filteredRestaurants, setFilteredRestaurants] = useState([]);
     const [searchText, setSearchText] = useState("");
     const RestaurantCardFreeDelivery = withFreeDeliveryLable(RestaurantCard);
-
+    const {logInUser, setUserName} = useContext(UserContext);
     useEffect(()=>{
         fetchData();
     },[])
@@ -52,6 +52,10 @@ const BodyComponent = () =>{
                             const filterData = listofRestaurant.filter((res)=>res.info.avgRating<4.4);
                             setFilteredRestaurants(filterData);
                         }}>Filter top rated Restaurant</button>
+                </div>
+                <div className="m-4 p-7 ">
+                    User Name : <input className="p-1 border border-black" 
+                    value={logInUser} onChange = {(e)=>setUserName(e.target.value)}/>
                 </div>
             </div>
             <div className="flex flex-wrap justify-center">

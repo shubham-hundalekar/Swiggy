@@ -1,4 +1,4 @@
-import React, {lazy, Suspense} from "react";
+import React, {lazy, Suspense, useEffect, useState} from "react";
 import ReactDOM from "react-dom/client";
 const root  = ReactDOM.createRoot(document.getElementById("root"));
 import HeaderComponent from "./components/HeaderComponent";
@@ -9,6 +9,7 @@ import Cart from "./components/Cart"
 import Error from "./components/Error";
 import {createBrowserRouter, RouterProvider, Outlet} from "react-router-dom"
 import RestaurantMenu from "./components/RestaurantMenu";
+import UserContext from "./utils/UserContext";
 // import Grocery from "./components/Grocery";
 
 const Grocery = lazy(()=>import("./components/Grocery"));
@@ -29,10 +30,20 @@ Footer
   */
  
 const AppComponent = () =>{
+  const [userName, setUserName] = useState();
+  useEffect(()=>{
+    const data = {
+      name:"Shubham Hundalekar"
+    }
+    setUserName(data.name);
+  },[])
+  console.log(userName);
     return(
         <div className="app">
-            <HeaderComponent/>
-            <Outlet/>
+            <UserContext.Provider value={{logInUser:userName, setUserName}}>
+              <HeaderComponent/> 
+              <Outlet/>
+            </UserContext.Provider>
         </div>
 
     )
