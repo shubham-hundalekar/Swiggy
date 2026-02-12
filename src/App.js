@@ -11,6 +11,8 @@ import {createBrowserRouter, RouterProvider, Outlet} from "react-router-dom"
 import RestaurantMenu from "./components/RestaurantMenu";
 import UserContext from "./utils/UserContext";
 // import Grocery from "./components/Grocery";
+import {Provider} from "react-redux"
+import appStore from "./utils/appStore";
 
 const Grocery = lazy(()=>import("./components/Grocery"));
 
@@ -37,13 +39,14 @@ const AppComponent = () =>{
     }
     setUserName(data.name);
   },[])
-  console.log(userName);
     return(
         <div className="app">
-            <UserContext.Provider value={{logInUser:userName, setUserName}}>
-              <HeaderComponent/> 
-              <Outlet/>
-            </UserContext.Provider>
+            <Provider store = {appStore}>
+              <UserContext.Provider value={{logInUser:userName, setUserName}}>
+                <HeaderComponent/> 
+                <Outlet/>
+              </UserContext.Provider>
+            </Provider>
         </div>
 
     )
